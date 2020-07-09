@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('./models/users')
+var userModel = require('../models/users')
+var journeyModel = require('../models/journey');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,5 +43,20 @@ router.post('/sign-in', async function (req, res, next) {
   }
 });
 
+/* POST pour la Homepage */
+router.post('/journey', async function (req, res, next) {
+  let journeyExist = await journeyModel.find({
+    departure: req.body.departure,
+    arrival: req.body.arrival,
+    date: req.body.date
+  });
+  console.log(journeyExist)
+
+let departureExist = journeyExist.departure 
+let arrivalExist = journeyExist.arrival
+let dateExist = journeyExist.date
+
+  res.render('homepage', {myJourney})
+})
 
 module.exports = router;
