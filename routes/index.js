@@ -37,7 +37,7 @@ router.post('/sign-in', async function (req, res, next) {
   if(userExist != null) {
     res.render('/homepage')
   } else {
-    res.redirect('/signup')
+    res.redirect('/signup ')
   }
 });
 
