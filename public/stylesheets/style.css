@@ -1,8 +1,19 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  background: rgb(186, 215, 229);
+  background: -moz-linear-gradient(90deg, rgb(186, 215, 229) 0%, rgb(45, 127, 179) 100%);
+  background: -webkit-linear-gradient(90deg, rgb(186, 215, 229) 0%, rgb(45, 127, 179) 100%);
+  background: -o-linear-gradient(90deg, rgb(186, 215, 229) 0%, rgb(45, 127, 179) 100%);
+  background: -ms-linear-gradient(90deg, rgb(186, 215, 229) 0%, rgb(45, 127, 179) 100%);
+  background: linear-gradient(180deg, rgb(186, 215, 229) 0%, rgb(45, 127, 179) 100%);
 }
 
 a {
   color: #00B7FF;
+}
+
+nav {
+  background-color: #F8F9FA;
 }
