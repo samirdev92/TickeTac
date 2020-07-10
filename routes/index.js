@@ -22,6 +22,7 @@ router.post('/sign-up', async function(req, res, next) {
   let userSession = {
     first_name: newUser.first_name,
     last_name: newUser.last_name,
+    email_address: newUser.email_address,
     id: newUser._id
   }
   console.log(userSession)
@@ -34,9 +35,10 @@ router.post('/sign-in', async function (req, res, next) {
     email_address: req.body.email,
     password: req.body.password
   })
-  console.log(userExist)
+  console.log("userExist :" + userExist)
+  
   if(userExist != null) {
-    res.render('homepage')
+    res.render('homepage', {})
   } else {
     res.redirect('/')
   }
