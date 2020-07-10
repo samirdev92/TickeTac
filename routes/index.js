@@ -8,6 +8,14 @@ router.get('/', function(req, res, next) {
   res.render('index', {});
 });
 
+router.get('/homepage', function(req, res, next) {
+  if(req.session.user == null){
+    res.redirect('/')
+  } else {
+    res.render('homepage')
+  }
+})
+
 /* POSTS pour le Sign up */ 
 router.post('/sign-up', async function(req, res, next) {
 
@@ -19,7 +27,8 @@ router.post('/sign-up', async function(req, res, next) {
   });
   await newUser.save()
   console.log(newUser)
-  let userSession = {
+
+  req.session.user = {
     first_name: newUser.first_name,
     last_name: newUser.last_name,
     id: newUser._id
@@ -34,15 +43,20 @@ router.post('/sign-in', async function (req, res, next) {
     email_address: req.body.email,
     password: req.body.password
   })
-  console.log(userExist)
+  console.log('ggfgbfbgfbgf', userExist)
   if(userExist != null) {
-    res.render('homepage')
+  req.session.user = {
+    first_name: userExist.first_name,
+    last_name: userExist.last_name,
+    id: userExist._id
+  }
+    res.redirect('/homepage')
   } else {
     res.redirect('/')
   }
 });
 
-/* POST pour la Homepage */
+/* POST pour choisir son voyage */
 router.post('/journey', async function (req, res, next) {
   let journeyExist = await journeyModel.find({
     departure: req.body.departure,
