@@ -9,10 +9,15 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
+<<<<<<< HEAD
     "express": "~4.16.0",
+=======
+    "express": "^4.17.1",
+>>>>>>> 5bd826e7568a87a3692ca824e8cef73436414293
     "express-session": "^1.17.1",
     "http-errors": "~1.6.2",
     "mongoose": "^5.9.22",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "session": "^0.1.0"
   }
 }
