@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var userModel = require('../models/users')
 var journeyModel = require('../models/journey');
+const { text } = require('express');
 
 
 /* GET home page. */
@@ -50,13 +51,25 @@ router.post('/journey', async function (req, res, next) {
     arrival: req.body.arrival,
     date: req.body.date
   });
-  console.log(journeyExist)
 
-let departureExist = journeyExist.departure 
-let arrivalExist = journeyExist.arrival
-let dateExist = journeyExist.date
+  for(i=0; i<journeyExist.length; i++){
+    journeyExist[i].departureTime = journeyExist[i].departureTime.replace(":", "")
+  }
+  journeyExist.sort(
+    ((a, b) => a.departureTime - b.departureTime));
 
-  res.render('homepage', {myJourney})
+console.log(journeyExist[0].departureTime)
+
+for(i=0; i<journeyExist.length; i++){
+  if(journeyExist[i].departureTime.length === 3){
+    journeyExist[i].departureTime = journeyExist[i].departureTime.charAt(0)+":" + journeyExist[i].departureTime.charAt(1) + journeyExist[i].departureTime.charAt(2)
+  } else {journeyExist[i].departureTime = journeyExist[i].departureTime.charAt(0) + journeyExist[i].departureTime.charAt(1)+":"+journeyExist[i].departureTime.charAt(2)+
+  journeyExist[i].departureTime.charAt(3)
+  }
+}
+  console.log("CONSOLE LOG", journeyExist)
+
+  res.render('homepage', {journeyExist})
 })
 
 module.exports = router;
