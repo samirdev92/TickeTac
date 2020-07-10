@@ -34,8 +34,8 @@ router.post('/sign-up', async function(req, res, next) {
     email_address: newUser.email_address,
     id: newUser._id
   }
-  console.log(userSession)
-  res.render('homepage'), {userSession};
+ 
+  res.render('homepage');
 })
 
 /* POSTS pour le Sign in */ 
@@ -76,13 +76,19 @@ console.log(journeyExist[0].departureTime)
 for(i=0; i<journeyExist.length; i++){
   if(journeyExist[i].departureTime.length === 3){
     journeyExist[i].departureTime = journeyExist[i].departureTime.charAt(0)+":" + journeyExist[i].departureTime.charAt(1) + journeyExist[i].departureTime.charAt(2)
-  } else {journeyExist[i].departureTime = journeyExist[i].departureTime.charAt(0) + journeyExist[i].departureTime.charAt(1)+":"+journeyExist[i].departureTime.charAt(2)+
+  } else {journeyExist[i].departgitureTime = journeyExist[i].departureTime.charAt(0) + journeyExist[i].departureTime.charAt(1)+":"+journeyExist[i].departureTime.charAt(2)+
   journeyExist[i].departureTime.charAt(3)
   }
+}
+req.session.journeyExist = {
+
 }
   console.log("CONSOLE LOG", journeyExist)
 
   res.render('homepage', {journeyExist})
 })
+
+// route pour afficher mes tickets
+
 
 module.exports = router;
