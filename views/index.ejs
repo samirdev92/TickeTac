@@ -1,10 +1,62 @@
+    <!-- header -->
   <%- include('header')%>
-  <!-- main -->
-    
-   <div>
-     <div>
-       
-     </div>
-   </div>
 
-   <%- include('footer')%>
+  <!-- main -->
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 mx-auto mt-5 d-flex">
+          <!-- LOG IN AREA -->
+          <div class="col-6 text-center">
+
+              <h4 class="text-center text-white">Sign In</h4>
+
+              <form action="/login" method="POST">
+                <div class="form-group">
+                  <label for="exampleInputEmail1"></label>
+                  <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1"></label>
+                  <input name="password" type="password" class="form-control" placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn btn-danger">Confirm</button>
+              </form>
+
+
+          </div>
+
+          <!-- SIGN UP AREA -->
+          <div class="col-6 text-center">
+
+              <h4 class="text-center text-white">Sign Up</h4>
+
+              <form action="/sign-up" method="POST">
+                <div class="form-group">
+                  <label for="exampleInputLastname"></label>
+                  <input name='last_name' type="text" class="form-control mb-3" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFirstname"></label>
+                  <input name='first_name' type="text" class="form-control mb-3" placeholder="FirstName">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"></label>
+                  <input name="email" type="email" class="form-control mb-3" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1"></label>
+                  <input name="password" type="password" class="form-control mb-3"  placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn btn-danger">Confirm</button>
+              </form>
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <%- include('footer')%>
